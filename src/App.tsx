@@ -1,11 +1,10 @@
-import { FC, useMemo } from 'react';
+import { FC, useCallback } from 'react';
 import Button from '@mui/material/Button';
 
 export const App: FC = () => {
-  const handleDonate = useMemo(() => {
-    return () => {
-      alert('Donate now!');
-    };
+
+  const handleDonate = useCallback(() => {
+    alert('Donate now!');
   }, []);
 
   return (
