@@ -11,7 +11,6 @@ export const App: FC = () => {
   return (
     <div>
       <h1>Donate USDC</h1>
-      <p>Welcome to the USDC donation application!</p>
       <Button variant="contained" color="primary" onClick={handleDonate}>
         Donate now
       </Button>

@@ -6,9 +6,7 @@
   "scripts": {
     "build": "parcel build src/index.tsx --no-source-maps",
     "dev": "parcel index.html",
-    "check-types": "tsc --noEmit",
-    "lint": "eslint \"src/**/*.{ts,tsx}\"",
-    "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
+    "eslint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
     "prettier:fix": "prettier --write 'src/**/*.{ts,tsx,js,jsx,css,html}'"
   },
   "dependencies": {
