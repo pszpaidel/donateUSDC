@@ -8,7 +8,8 @@
     "dev": "parcel index.html",
     "check-types": "tsc --noEmit",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
-    "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix"
+    "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
+    "prettier:fix": "prettier --write 'src/**/*.{ts,tsx,js,jsx,css,html}'"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -16,6 +17,9 @@
     "@headlessui/tailwindcss": "^0.2.2",
     "@mui/icons-material": "^7.1.0",
     "@mui/material": "^7.1.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.0",
+    "prettier": "^3.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

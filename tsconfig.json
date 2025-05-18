@@ -9,6 +9,6 @@
     "skipLibCheck": true, // Skip type checking of libraries
     "allowSyntheticDefaultImports": true, // Allows for cleaner imports
     },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "prettier.config.js"],
   "exclude": ["node_modules", "dist"]
 }
