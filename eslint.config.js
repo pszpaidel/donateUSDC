@@ -11,7 +11,7 @@ export default [
   ...tseslint.configs.recommended,
   ...tseslint.configs.strictTypeChecked,
   ...tseslint.configs.stylistic,
-  prettier.configs.recommended,
+  prettier,
   {
     files: ['src**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
