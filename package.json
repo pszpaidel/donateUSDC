@@ -9,11 +9,6 @@
     "eslint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
     "prettier:fix": "prettier --write 'src/**/*.{ts,tsx,js,jsx,css,html}'",
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run eslint:fix && npm run prettier:fix"
-    }
-  },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
