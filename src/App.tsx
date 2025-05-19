@@ -9,7 +9,7 @@ export const App: FC = () => {
   }, []);
 
   const handleWalletConnect = useCallback(() => {
-    alert('Wallet connected!');
+    alert('Wallet connected!!');
   }, []);
 
   return (
