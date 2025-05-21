@@ -14,6 +14,10 @@
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^7.1.0",
     "@mui/material": "^7.1.0",
+    "@perawallet/connect": "^1.4.2",
+    "@txnlab/use-wallet": "^4.1.0",
+    "@txnlab/use-wallet-react": "^4.1.0",
+    "algosdk": "^3.2.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.4.0",
     "prettier": "^3.5.3",
@@ -30,7 +34,15 @@
     "globals": "^16.1.0",
     "husky": "^9.1.7",
     "parcel": "^2.9.3",
+    "process": "^0.11.10",
     "typescript": "^5.0.4",
     "typescript-eslint": "^8.32.1"
+  },
+  "alias": {
+    "lute-connect": false,
+    "@walletconnect/modal": false,
+    "@walletconnect/sign-client": false,
+    "@blockshake/defly-connect": false,
+    "@agoralabs-sh/avm-web-provider": false
   }
 }
