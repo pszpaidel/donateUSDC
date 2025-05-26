@@ -2,12 +2,16 @@ import { FC, useCallback } from 'react';
 import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
 import Stack from '@mui/material/Stack';
-import { WalletManager, WalletId, NetworkId, WalletProvider } from '@txnlab/use-wallet-react';
+// import { WalletManager, WalletId, NetworkId, WalletProvider } from '@txnlab/use-wallet-react';
+import { AlgorandClient, Config } from '@algorandfoundation/algokit-utils';
 
-const manager = new WalletManager({
-  wallets: [WalletId.PERA],
-  defaultNetwork: NetworkId.MAINNET,
-});
+// const manager = new WalletManager({
+//   wallets: [WalletId.PERA],
+//   defaultNetwork: NetworkId.MAINNET,
+// });
+
+Config.configure({ debug: true });
+const algorand = AlgorandClient.mainNet();
 
 export const App: FC = () => {
   const handleDonate = useCallback(() => {
@@ -19,7 +23,7 @@ export const App: FC = () => {
   }, []);
 
   return (
-    <WalletProvider manager={manager}>
+    // <WalletProvider manager={manager}>
       <div>
         <Stack spacing={2}>
           <Button variant="contained" color="primary" onClick={handleWalletConnect}>
@@ -31,6 +35,6 @@ export const App: FC = () => {
           </Button>
         </Stack>
       </div>
-    </WalletProvider>
+    // </WalletProvider>
   );
 };
