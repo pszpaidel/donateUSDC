@@ -32,6 +32,9 @@ export default [
       prettier: pluginPrettier,
     },
     rules: {
+      '@typescript-eslint/no-misused-promises': 'warn',
+      '@typescript-eslint/no-unnecessary-condition': 'warn',
+      '@typescript-eslint/no-unsafe-argument': 'warn',
     },
     settings: {
       react: {
