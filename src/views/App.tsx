@@ -1,69 +1,35 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { AlgorandClient } from '@algorandfoundation/algokit-utils';
-import numeral, { Numeral } from 'numeral';
-import { Button, Input } from '@heroui/react';
-import { Account } from 'algosdk/client/algod';
-import { fetchTransactions } from '@/utils/fetchTransactions.ts';
-import { getRewardTransactions } from '@/utils/getRewardTransactions.ts';
-import CenteredValue from '@/component/CenteredValueComponent.tsx';
+import { Input } from '@heroui/react';
+import { AccountInfo } from '@/component/AccountInfo.tsx';
+import { RewardsInfo } from '@/component/RewardsInfo.tsx';
 
 const algorand = AlgorandClient.mainNet();
 
 export const App: FC = () => {
-  const [address, setAddress] = useState<string>();
-
-  const [accountInformation, setAccountInformation] = useState<Account>();
-  const [allTransactionsReward, setAllTransactionsReward] = useState<Numeral[]>([]);
-
-  const getAccountInfo = useCallback(async () => {
-    const result: Account = await algorand.client.algod.accountInformation(address).do();
-    setAccountInformation(result);
-  }, [address]);
-
-  const getStakingRewards = useCallback(async () => {
-    const transactionsResponse = await fetchTransactions(algorand.client.indexer, address);
-    const rewards = getRewardTransactions(transactionsResponse.transactions);
-
-    const amountOfRewards = rewards.map((value) =>
-      numeral(value?.paymentTransaction.amount || numeral(0)),
-    );
-
-    console.log(transactionsResponse);
-
-    setAllTransactionsReward(amountOfRewards);
-  }, [address]);
-
-  const getInfo = useCallback(async (): Promise<void> => {
-    await getAccountInfo();
-    await getStakingRewards();
-  }, [getAccountInfo, getStakingRewards]);
+  const [address, setAddress] = useState<string>(
+    'RULTY7ANRKPCOOVMV4DYNVFUZ2APHSTMY4JDPMS3ZIOCQS6EQOS3DEUTVY',
+  );
 
   return (
-    <div>
-      <Input
-        value={address || 'RULTY7ANRKPCOOVMV4DYNVFUZ2APHSTMY4JDPMS3ZIOCQS6EQOS3DEUTVY'}
-        placeholder="Add address"
-        onChange={(e) => {
-          setAddress(e.target.value);
-        }}
-      />
-      <Button onPress={getInfo}>Check Account</Button>
-
-      <div className="flex justify-center items-center min-h-screen gap-x-8">
-        <CenteredValue
-          title="Rewards"
-          isLoading={!allTransactionsReward.length}
-          value={allTransactionsReward
-            .reduce((sum, current) => sum.add(current.value()), numeral(0))
-            .divide(1000000)
-            .format('0.0')}
+    <div className="flex flex-col justify-center items-center p-8 w-full h-full">
+      <div className="flex flex-row justify-center items-center gap-x-8 min-w-[530px] mb-8">
+        <Input
+          value={address}
+          maxLength={58}
+          placeholder="Algorand address"
+          onChange={(e) => {
+            setAddress(e.target.value);
+          }}
+          style={{ textAlign: 'center' }}
         />
+      </div>
 
-        <CenteredValue
-          isLoading={!accountInformation}
-          title="Amount"
-          value={numeral(accountInformation?.amount).divide(1000000).format('0')}
-        />
+      <div className="flex flex-row justify-center items-center gap-x-8">
+        <div className="flex justify-center items-center gap-x-8">
+          <AccountInfo address={address.length === 58 ? address : undefined} algorand={algorand} />
+          <RewardsInfo address={address.length === 58 ? address : undefined} algorand={algorand} />
+        </div>
       </div>
     </div>
   );
