@@ -5,6 +5,7 @@ import { Button, Input } from '@heroui/react';
 import { Account } from 'algosdk/client/algod';
 import { fetchTransactions } from '@/utils/fetchTransactions.ts';
 import { getRewardTransactions } from '@/utils/getRewardTransactions.ts';
+import CenteredValue from '@/component/CenteredValueComponent.tsx';
 
 const algorand = AlgorandClient.mainNet();
 
@@ -48,15 +49,18 @@ export const App: FC = () => {
       />
       <Button onPress={getInfo}>Check Account</Button>
 
-      <div>Address: {accountInformation?.address}</div>
-      <div>Amount: {numeral(accountInformation?.amount).divide(1000000).format('0')}</div>
-      <div>
-        Rewards:
-        {allTransactionsReward
+      <CenteredValue
+        title="Rewards"
+        value={allTransactionsReward
           .reduce((sum, current) => sum.add(current.value()), numeral(0))
           .divide(1000000)
           .format('0.0')}
-      </div>
+      />
+
+      <CenteredValue
+        title="Amount"
+        value={numeral(accountInformation?.amount).divide(1000000).format('0')}
+      />
     </div>
   );
 };
