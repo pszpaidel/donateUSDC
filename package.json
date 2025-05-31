@@ -1,55 +1,46 @@
 {
-  "name": "donate-usdc",
+  "name": "algochecker",
   "version": "1.0.0",
   "type": "module",
-  "source": "src/index.html",
   "scripts": {
-    "build": "parcel build src/index.tsx --no-source-maps",
-    "dev": "parcel index.html",
+    "dev": "vite",
+    "build": "tsc && vite build",
     "eslint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
     "prettier:fix": "prettier --write 'src/**/*.{ts,tsx,js,jsx,css,html}'"
   },
   "dependencies": {
     "@algorandfoundation/algokit-utils": "^9.1.0",
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
-    "@mui/icons-material": "^7.1.0",
-    "@mui/material": "^7.1.0",
-    "@perawallet/connect": "^1.4.2",
-    "@txnlab/use-wallet": "^4.1.0",
-    "@txnlab/use-wallet-react": "^4.1.0",
+    "@heroui/react": "^2.7.8",
+    "@heroui/theme": "^2.4.15",
     "algosdk": "^3.3.0",
-    "bignumber.js": "^9.3.0",
-    "eslint-config-prettier": "^10.1.5",
-    "eslint-plugin-prettier": "^5.4.0",
+    "framer-motion": "^12.15.0",
     "numeral": "^2.0.6",
-    "prettier": "^3.5.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
     "@eslint/js": "^9.27.0",
+    "@tailwindcss/postcss": "^4.1.8",
+    "@tailwindcss/vite": "^4.1.8",
+    "@types/node": "^22.15.29",
     "@types/numeral": "^2.0.5",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.5.0",
+    "autoprefixer": "^10.4.21",
     "eslint": "^9.27.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "globals": "^16.1.0",
     "husky": "^9.1.7",
-    "parcel": "^2.15.1",
-    "process": "^0.11.10",
+    "postcss": "^8.5.4",
+    "prettier": "^3.5.3",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.32.1"
-  },
-  "alias": {
-    "lute-connect": false,
-    "@walletconnect/modal": false,
-    "@walletconnect/sign-client": false,
-    "@blockshake/defly-connect": false,
-    "@agoralabs-sh/avm-web-provider": false
-  },
-  "@parcel/resolver-default": {
-    "packageExports": true
+    "typescript-eslint": "^8.32.1",
+    "vite": "5.2.0",
+    "vite-tsconfig-paths": "4.3.2"
   }
 }

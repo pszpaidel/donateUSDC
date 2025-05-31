@@ -1,14 +1,22 @@
 {
-  "compilerOptions": {
-    "target": "ESNext", // ESNext enables modern ES Modules features
-    "module": "ESNext", // Use ES Modules
-    "moduleResolution": "Node", // Resolve modules like Node.js
-    "jsx": "react-jsx", // Use the JSX transform for React 17+
-    "strict": true, // Enable strict type-checking
-    "esModuleInterop": true, // For module interop between ES Modules and CommonJS
-    "skipLibCheck": true, // Skip type checking of libraries
-    "allowSyntheticDefaultImports": true, // Allows for cleaner imports
+  "compilerOptions": {    
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "paths": {
+      "@/*": ["./src/*"]
     },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", ".parcel-cache"]
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

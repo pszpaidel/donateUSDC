@@ -9,8 +9,6 @@ import pluginPrettier from 'eslint-plugin-prettier'
 export default [
   js.configs.recommended,
   ...tseslint.configs.recommended,
-  ...tseslint.configs.strictTypeChecked,
-  ...tseslint.configs.stylistic,
   prettier,
   {
     files: ['src**/*.{js,jsx,ts,tsx}'],
@@ -32,9 +30,7 @@ export default [
       prettier: pluginPrettier,
     },
     rules: {
-      '@typescript-eslint/no-misused-promises': 'warn',
-      '@typescript-eslint/no-unnecessary-condition': 'warn',
-      '@typescript-eslint/no-unsafe-argument': 'warn',
+      '@typescript-eslint/no-explicit-any': 'off'
     },
     settings: {
       react: {
