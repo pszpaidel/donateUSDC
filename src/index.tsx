@@ -10,6 +10,5 @@ root.render(
     <main>
       <App />
     </main>
-  </HeroUIProvider>
-,
+  </HeroUIProvider>,
 );

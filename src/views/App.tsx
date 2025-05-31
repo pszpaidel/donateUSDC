@@ -3,55 +3,44 @@ import { AlgorandClient } from '@algorandfoundation/algokit-utils';
 import numeral, { Numeral } from 'numeral';
 import { Button, Input } from '@heroui/react';
 import { Account } from 'algosdk/client/algod';
-
-const REWARD_ADDRESS = 'Y76M3MSY6DKBRHBL7C3NNDXGS5IIMQVQVUAB6MP4XEMMGVF2QWNPL226CA';
+import { fetchTransactions } from '@/utils/fetchTransactions.ts';
+import { getRewardTransactions } from '@/utils/getRewardTransactions.ts';
 
 const algorand = AlgorandClient.mainNet();
 
 export const App: FC = () => {
-  const [address, setAddress] = useState<string>(
-    'RULTY7ANRKPCOOVMV4DYNVFUZ2APHSTMY4JDPMS3ZIOCQS6EQOS3DEUTVY',
-  );
+  const [address, setAddress] = useState<string>();
 
   const [accountInformation, setAccountInformation] = useState<Account>();
   const [allTransactionsReward, setAllTransactionsReward] = useState<Numeral[]>([]);
 
   const getAccountInfo = useCallback(async () => {
-    const result = await algorand.client.algod.accountInformation(address).do();
-    console.log(result);
-
+    const result: Account = await algorand.client.algod.accountInformation(address).do();
     setAccountInformation(result);
   }, [address]);
 
   const getStakingRewards = useCallback(async () => {
-    const txns = await algorand.client.indexer
-      .searchForTransactions()
-      .address(address)
-      .txType('pay')
-      .do();
+    const transactionsResponse = await fetchTransactions(algorand.client.indexer, address);
+    const rewards = getRewardTransactions(transactionsResponse.transactions);
 
-    console.log(txns);
-
-    const rewardTxns = txns.transactions.filter(
-      (tx) => tx.paymentTransaction && tx.sender === REWARD_ADDRESS,
+    const amountOfRewards = rewards.map((value) =>
+      numeral(value?.paymentTransaction.amount || numeral(0)),
     );
 
-    const allTransactionsReward = rewardTxns.map((value) =>
-      numeral(value?.paymentTransaction?.amount || numeral(0)),
-    );
+    console.log(transactionsResponse);
 
-    setAllTransactionsReward(allTransactionsReward);
+    setAllTransactionsReward(amountOfRewards);
   }, [address]);
 
   const getInfo = useCallback(async (): Promise<void> => {
     await getAccountInfo();
     await getStakingRewards();
-  }, []);
+  }, [getAccountInfo, getStakingRewards]);
 
   return (
     <div>
       <Input
-        value={address}
+        value={address || 'RULTY7ANRKPCOOVMV4DYNVFUZ2APHSTMY4JDPMS3ZIOCQS6EQOS3DEUTVY'}
         placeholder="Add address"
         onChange={(e) => {
           setAddress(e.target.value);
