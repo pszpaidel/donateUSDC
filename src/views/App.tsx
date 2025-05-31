@@ -49,20 +49,22 @@ export const App: FC = () => {
       />
       <Button onPress={getInfo}>Check Account</Button>
 
-      <CenteredValue
-        title="Rewards"
-        isLoading={!allTransactionsReward.length}
-        value={allTransactionsReward
-          .reduce((sum, current) => sum.add(current.value()), numeral(0))
-          .divide(1000000)
-          .format('0.0')}
-      />
+      <div className="flex justify-center items-center min-h-screen gap-x-8">
+        <CenteredValue
+          title="Rewards"
+          isLoading={!allTransactionsReward.length}
+          value={allTransactionsReward
+            .reduce((sum, current) => sum.add(current.value()), numeral(0))
+            .divide(1000000)
+            .format('0.0')}
+        />
 
-      <CenteredValue
-        isLoading={!accountInformation}
-        title="Amount"
-        value={numeral(accountInformation?.amount).divide(1000000).format('0')}
-      />
+        <CenteredValue
+          isLoading={!accountInformation}
+          title="Amount"
+          value={numeral(accountInformation?.amount).divide(1000000).format('0')}
+        />
+      </div>
     </div>
   );
 };
