@@ -1,4 +1,4 @@
-import { Transaction } from 'algosdk/src/client/v2/indexer/models/types.ts';
+import { Transaction } from 'algosdk/client/indexer';
 
 const REWARD_ADDRESS = 'Y76M3MSY6DKBRHBL7C3NNDXGS5IIMQVQVUAB6MP4XEMMGVF2QWNPL226CA';
 
