@@ -1,8 +1,8 @@
-import React from 'react';
-import { FC, useCallback, useState } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import { AlgorandClient } from '@algorandfoundation/algokit-utils';
 import numeral, { Numeral } from 'numeral';
 import { Button, Input } from '@heroui/react';
+import { Account } from 'algosdk/client/algod';
 
 const REWARD_ADDRESS = 'Y76M3MSY6DKBRHBL7C3NNDXGS5IIMQVQVUAB6MP4XEMMGVF2QWNPL226CA';
 
@@ -13,7 +13,7 @@ export const App: FC = () => {
     'RULTY7ANRKPCOOVMV4DYNVFUZ2APHSTMY4JDPMS3ZIOCQS6EQOS3DEUTVY',
   );
 
-  const [accountInformation, setAccountInformation] = useState();
+  const [accountInformation, setAccountInformation] = useState<Account>();
   const [allTransactionsReward, setAllTransactionsReward] = useState<Numeral[]>([]);
 
   const getAccountInfo = useCallback(async () => {
