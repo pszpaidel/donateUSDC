@@ -33,11 +33,11 @@ export const AccountInfo: FC<AccountInfoProps> = ({ address, algorand }) => {
 
   useEffect(() => {
     getAccountInfo();
-  }, [getAccountInfo, address, algorand, ]);
+  }, [getAccountInfo, address, algorand]);
 
   return (
     <CenteredValue
-      isLoading ={isLoading}
+      isLoading={isLoading}
       title="Amount"
       value={
         accountInformation ? numeral(accountInformation?.amount).divide(1000000).format('0') : 'N/A'

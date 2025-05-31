@@ -10,6 +10,7 @@ export const App: FC = () => {
   const [address, setAddress] = useState<string>(
     'RULTY7ANRKPCOOVMV4DYNVFUZ2APHSTMY4JDPMS3ZIOCQS6EQOS3DEUTVY',
   );
+  const isValidAddress = address.length === 58;
 
   return (
     <div className="flex flex-col justify-center items-center p-8 w-full h-full">
@@ -25,12 +26,20 @@ export const App: FC = () => {
         />
       </div>
 
-      <div className="flex flex-row justify-center items-center gap-x-8">
-        <div className="flex justify-center items-center gap-x-8">
-          <AccountInfo address={address.length === 58 ? address : undefined} algorand={algorand} />
-          <RewardsInfo address={address.length === 58 ? address : undefined} algorand={algorand} />
+      {isValidAddress && (
+        <div className="flex flex-row justify-center items-center gap-x-8 ">
+          <div className="flex justify-center items-center gap-x-8">
+            <AccountInfo
+              address={address.length === 58 ? address : undefined}
+              algorand={algorand}
+            />
+            <RewardsInfo
+              address={address.length === 58 ? address : undefined}
+              algorand={algorand}
+            />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

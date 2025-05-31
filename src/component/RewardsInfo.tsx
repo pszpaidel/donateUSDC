@@ -23,7 +23,11 @@ export const RewardsInfo: FC<RewardsInfoProps> = ({ address, algorand }) => {
     setIsLoading(true);
     if (address) {
       try {
-        const transactionsResponse = await algorand.client.indexer.searchForTransactions().address(address).txType('pay').do();
+        const transactionsResponse = await algorand.client.indexer
+          .searchForTransactions()
+          .address(address)
+          .txType('pay')
+          .do();
         const fetchedRewards = getRewardTransactions(transactionsResponse.transactions);
 
         const amountOfRewards = fetchedRewards.map((value) =>
