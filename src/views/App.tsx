@@ -51,6 +51,7 @@ export const App: FC = () => {
 
       <CenteredValue
         title="Rewards"
+        isLoading={!allTransactionsReward.length}
         value={allTransactionsReward
           .reduce((sum, current) => sum.add(current.value()), numeral(0))
           .divide(1000000)
@@ -58,6 +59,7 @@ export const App: FC = () => {
       />
 
       <CenteredValue
+        isLoading={!accountInformation}
         title="Amount"
         value={numeral(accountInformation?.amount).divide(1000000).format('0')}
       />
