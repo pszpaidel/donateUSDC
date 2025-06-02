@@ -1,0 +1,93 @@
+.search {
+    .search-form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 600px;
+        /*
+        width: 90%;
+        */
+    }
+
+    .search-input-wrapper {
+        position: relative;
+        flex: 1;
+        min-width: 300px;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 16px 50px 16px 20px;
+        font-size: 1.1rem;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        color: #333;
+        outline: none;
+        transition: all 0.3s ease;
+        font-family: 'Georgia', serif;
+    }
+
+    .search-input::placeholder {
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    .search-input:focus {
+        border-color: rgba(255, 255, 255, 0.6);
+        background: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        transform: scale(1.02);
+    }
+
+    .clear-button {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        font-size: 20px;
+        color: rgba(0, 0, 0, 0.6);
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .clear-button.visible {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .clear-button:hover {
+        background: rgba(255, 255, 255, 0.3);
+        color: rgba(0, 0, 0, 0.8);
+        transform: translateY(-50%) scale(1.1);
+    }
+
+ /*   @media (max-width: 768px) {
+        .content-area {
+            padding-top: 20vh;
+        }
+
+        .search-form {
+            width: 95%;
+        }
+
+        .search-input-wrapper {
+            min-width: auto;
+            width: 100%;
+        }
+
+        .search-input {
+            font-size: 1rem;
+        }
+    }*/
+}
